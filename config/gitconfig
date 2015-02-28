@@ -1,0 +1,8 @@
+[http]
+    sslVerify = false
+    postBuffer = 524288000
+[user]
+    name = Qingming He
+    email = 906459647@qq.com
+[core]
+    editor = vim
