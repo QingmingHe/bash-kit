@@ -13,9 +13,14 @@ alias gd="git diff"
 alias gp="git push"
 alias gl="git pull"
 
+## files
+alias ll="ls -la"
+alias v=vim
+
 ### Environment variables
 export LANG=en_US
 export TERM=xterm-256color
+export HISTCONTROL=ignoreboth:erasedups
 ENV_VAR_FILE=~/.bash-kit/env-var.sh
 if [ -f ENV_VAR_FILE ];
 then
