@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 for f in `ls config/`;
 do
     echo "install config/$f to ~/.$f"
