@@ -1,0 +1,5 @@
+--langdef=Org
+--langmap=Org:.org
+--regex-Org=/^\* +(.+)$/\1/c,chapter/
+--regex-Org=/^\*\* +(.+)$/\1/s,section/
+--regex-Org=/^\*\*\* +(.+)$/\1/u,subsection/
