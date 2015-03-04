@@ -1,5 +1,42 @@
 #!/usr/bin/env bash
 
+### functions
+# function path_not_in_PATH
+# Test whether a path already exists in $PATH environment variable.
+path_not_in_PATH ()
+{
+    local OIFS
+
+    OIFS=$IFS
+    IFS=':'
+    is_new_path="true"
+    for path in $PATH
+    do
+        if [ "$path" = $1 ]
+        then
+            is_new_path="false"
+            break
+        fi
+    done
+    IFS=$OIFS
+
+    echo $is_new_path
+}
+
+# function add_new_PATH
+# Add path to head of $PATH environment variable if path is not in $PATH
+add_new_PATH ()
+{
+    if [ $(path_not_in_PATH $1) = "true" ]
+    then
+        export PATH=$1:$PATH
+    else
+        echo "$1 already in \$PATH environment variable!"
+    fi
+
+    return 0
+}
+
 ### aliases
 ## git
 alias g="git status"
@@ -22,8 +59,12 @@ alias v=vim
 export LANG=en_US.UTF-8
 export TERM=xterm-256color
 export HISTCONTROL=ignoreboth:erasedups
+add_new_PATH "$HOME/bin"
 
 ## User env vars
+# Env vars may be useful: LD_LIBRARY_PATH, HDF5_ROOT, GTAGSCONF, CYGWIN_ROOT,
+# GTD_ROOT
+# SUGAR's vars: SUGAR, SUGAR_PRE, BROADR_POOL
 ENV_VAR_FILE=~/.bash-kit/env-var.sh
 if [ -f $ENV_VAR_FILE ];
 then
