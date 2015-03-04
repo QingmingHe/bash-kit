@@ -3,7 +3,7 @@
 ### functions
 # function path_not_in_PATH
 # Test whether a path already exists in $PATH environment variable.
-path_not_in_PATH ()
+function path_not_in_PATH ()
 {
     local OIFS
 
@@ -25,7 +25,7 @@ path_not_in_PATH ()
 
 # function add_new_PATH
 # Add path to head of $PATH environment variable if path is not in $PATH
-add_new_PATH ()
+function add_new_PATH ()
 {
     if [ $(path_not_in_PATH $1) = "true" ]
     then
