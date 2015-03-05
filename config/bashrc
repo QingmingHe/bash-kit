@@ -41,7 +41,7 @@ function add_new_PATH ()
 ## git
 alias g="git status"
 alias ga="git add"
-alias gaa="git add ."
+alias gaa="git add --all ."
 alias gc="git commit"
 alias gb="git branch"
 alias gbd="git branch -d"
