@@ -51,9 +51,11 @@ alias gp="git push"
 alias gl="git pull"
 alias gr="git remote"
 
-## files
+## misc
+alias ls="ls -hF --color=tty"
 alias ll="ls -la"
-alias v=vim
+alias v="vim"
+alias emb="emacs --batch -Q -L . -f batch-byte-compile"
 
 ### Environment variables
 export LANG=en_US.UTF-8
