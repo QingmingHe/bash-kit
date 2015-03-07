@@ -12,7 +12,7 @@ function path_not_in_PATH ()
     is_new_path="true"
     for path in $PATH
     do
-        if [ "$path" = $1 ]
+        if [[ $path = $1 ]]
         then
             is_new_path="false"
             break
@@ -27,7 +27,7 @@ function path_not_in_PATH ()
 # Add path to head of $PATH environment variable if path is not in $PATH
 function add_new_PATH ()
 {
-    if [ $(path_not_in_PATH $1) = "true" ]
+    if [[ $(path_not_in_PATH $1) = "true" ]]
     then
         export PATH=$1:$PATH
     else
