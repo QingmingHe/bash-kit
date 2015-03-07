@@ -65,7 +65,7 @@ add_new_PATH "$HOME/bin"
 
 ## User env vars
 # Env vars may be useful: LD_LIBRARY_PATH, HDF5_ROOT, GTAGSCONF, CYGWIN_ROOT,
-# GTD_ROOT
+# GTD_ROOT, DROPBOX_ROOT, MIDNIGHT_ROOT
 # SUGAR's vars: SUGAR, SUGAR_PRE, BROADR_POOL
 ENV_VAR_FILE=~/.bash-kit/env-var.sh
 if [ -f $ENV_VAR_FILE ];
