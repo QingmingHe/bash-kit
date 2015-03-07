@@ -68,7 +68,7 @@ add_new_PATH "$HOME/bin"
 # GTD_ROOT, DROPBOX_ROOT, MIDNIGHT_ROOT
 # SUGAR's vars: SUGAR, SUGAR_PRE, BROADR_POOL
 ENV_VAR_FILE=~/.bash-kit/env-var.sh
-if [ -f $ENV_VAR_FILE ];
+if [[ -f $ENV_VAR_FILE ]]
 then
     source $ENV_VAR_FILE
 else
