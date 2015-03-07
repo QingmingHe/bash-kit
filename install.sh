@@ -9,3 +9,10 @@ do
     fi
     ln -sf "$PWD/config/$f" ~/."$f"
 done
+
+echo "install vim configuration"
+if [ -d ~/.vim ]
+then
+    mv ~/.vim ~/.vim.bak
+fi
+cp -r vim ~/.vim

@@ -1,0 +1,7 @@
+* Install
+** Update vim plugins
+
+#+begin_src sh
+git clone https://github.com/gmarik/Vundle.vim ~/.vim/bundle/Vundle.vim
+vim +BundleInstall +qall
+#+end_src
