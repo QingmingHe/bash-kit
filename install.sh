@@ -1,15 +1,18 @@
 #!/usr/bin/env bash
 
-for f in `ls config/`;
+# Install all configuration files under dotconfig/
+dotconfdir="dotconfig"
+for f in `ls $dotconfdir/`;
 do
-    echo install config/$f to ~/.$f
+    echo install $dotconfdir/$f to ~/.$f
     if [[ -f ~/.$f ]]
     then
         cp ~/.$f ~/.$f.bak
     fi
-    ln -sf $PWD/config/$f ~/.$f
+    ln -sf $PWD/$dotconfdir/$f ~/.$f
 done
 
+# Install vim configuration
 echo install vim configuration
 if [[ -d ~/.vim ]]
 then
@@ -20,3 +23,13 @@ then
     mv ~/.vim ~/.vim.bak
 fi
 cp -r vim ~/.vim
+
+# Install Cygwin.bat for cygwin.
+# if [[ "$OSTYPE" == "cygwin" ]]
+# then
+#     if [[ -f /Cygwin.bat ]]
+#     then
+#         mv /Cygwin.bat /Cygwin.bat.bak
+#     fi
+#     cp -f Cygwin.bat /
+# fi
