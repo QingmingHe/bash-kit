@@ -37,6 +37,27 @@ function add_new_PATH ()
     return 0
 }
 
+# function emacs_compile_dir
+# Batch compile all elisp files under path. The last argument is path to be
+# recompiled, all the other arguments is paths to be prepended to emacs
+# load-path
+function emacs_compile_dir ()
+{
+    command="emacs --batch -Q -L ."
+    count=0
+    for dir in $*
+    do
+        (( count++ ))
+        if [[ "$count" -eq "$#" ]]
+        then
+            command="$command -f batch-byte-compile $dir/*.el"
+        else
+            command="$command -L $dir"
+        fi
+    done
+    $command
+}
+
 ### aliases
 ## git
 alias g="git status"
@@ -55,7 +76,8 @@ alias gr="git remote"
 alias ls="ls -hF --color=tty"
 alias ll="ls -la"
 alias v="vim"
-alias emb="emacs --batch -Q -L . -f batch-byte-compile"
+alias emb="emacs_compile_dir"
+alias mkdir="mkdir -pv"
 
 ### Environment variables
 export LANG=en_US.UTF-8
