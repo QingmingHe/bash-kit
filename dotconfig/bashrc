@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
 
+## load global definitions
+if [[ -f /etc/bashrc ]]
+then
+    . /etc/bashrc
+fi
+
 ### functions
 # function path_not_in_PATH
 # Test whether a path already exists in $PATH environment variable.
