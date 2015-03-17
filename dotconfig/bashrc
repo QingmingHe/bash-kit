@@ -80,7 +80,7 @@ alias gr="git remote"
 
 ## misc
 alias ls="ls -hF --color=tty"
-alias ll="ls -la"
+alias ll="ls -lAh"
 alias v="vim"
 alias emb="emacs_compile_dir"
 alias mkdir="mkdir -pv"
