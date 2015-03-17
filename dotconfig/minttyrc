@@ -1,9 +1,8 @@
-BoldAsFont=no
 Font=Consolas
 FontHeight=12
 RightClickAction=paste
 Term=xterm-256color
-Transparency=low
+Transparency=off
 CursorType=block
 Charset=UTF-8
 Window=max
@@ -27,3 +26,6 @@ BoldBlue=135,215,255
 BoldMagenta=215,175,215
 BoldCyan=135,215,175
 BoldWhite=215,215,215
+BoldAsFont=yes
+BoldAsColour=no
+Locale=C
