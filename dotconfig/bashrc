@@ -82,6 +82,7 @@ alias gr="git remote"
 alias ls="ls -hF --color=tty"
 alias ll="ls -lAh"
 alias v="vim"
+alias e="emacsclient -nw"
 alias emb="emacs_compile_dir"
 alias mkdir="mkdir -pv"
 
