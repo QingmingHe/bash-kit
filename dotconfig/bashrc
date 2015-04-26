@@ -92,6 +92,12 @@ export TERM=xterm-256color
 export HISTCONTROL=ignoreboth:erasedups
 add_new_PATH "$HOME/bin"
 
+### Key bindings
+# By default, shell will apply Emacs key bindings. If you are familiar with
+# Vim key bindings and would like to use Vim key bindings for command-line
+# editing, just comment out the following line.
+# bindkey -v
+
 ## User env vars
 # Env vars may be useful: LD_LIBRARY_PATH, HDF5_ROOT, GTAGSCONF, CYGWIN_ROOT,
 # GTD_ROOT, DROPBOX_ROOT, MIDNIGHT_ROOT
