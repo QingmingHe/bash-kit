@@ -5,4 +5,4 @@
 --regex-Org=/^\*\*\* +(.+)$/\1/u,subsections/
 
 --Fortran-kinds=+i
---regex-Fortran=/^# *(ifdef|ifndef|if +defined|elif +defined)\(?([^\)]+)\)?$/\2/d,definitions/
+--regex-Fortran=/^# *define +([^ \(]+)(.*)$/\1/d,definitions/
