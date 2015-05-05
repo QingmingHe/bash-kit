@@ -65,8 +65,7 @@ nnoremap <Leader>2 :set tabstop=2 softtabstop=2 shiftwidth=2<CR>
 nnoremap <Leader>4 :set tabstop=4 softtabstop=4 shiftwidth=4<CR>
 
 " tags
-set tags=./tags,tags
-set tags+=tags;/
+set tags=./tags;/
 " taglist
 map <silent> <leader>tl :TlistToggle<cr>
 let Tlist_Show_One_File=0
