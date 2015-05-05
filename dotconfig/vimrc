@@ -39,7 +39,7 @@ set nojoinspaces
 syntax on
 
 " colorscheme
-colorscheme default
+colorscheme desert
 
 " line number
 set number
@@ -63,6 +63,9 @@ au FileType xml setl sw=2 sts=2 et
 au FileType fortran setl sw=2 sts=2 et
 nnoremap <Leader>2 :set tabstop=2 softtabstop=2 shiftwidth=2<CR>
 nnoremap <Leader>4 :set tabstop=4 softtabstop=4 shiftwidth=4<CR>
+
+" leader key bindings
+let mapleader=" "
 
 " tags
 set tags=./tags;/
