@@ -6,6 +6,21 @@ then
     . /etc/bashrc
 fi
 
+## determine operation system
+if [[ $OSTYPE = "linux-gnu" ]]; then
+    export ostype="linux"
+elif [[ $OSTYPE = "cygwin" ]]; then
+    export ostype="cygwin"
+elif [[ $OSTYPE = "darwin"* ]]; then
+    export ostype="darwin"
+elif [[ $OSTYPE = "msys" ]]; then
+    export ostype="msys"
+elif [[ $OSTYPE = "freebsd"* ]]; then
+    export ostype="freebsd"
+else
+    export ostype="unknown"
+fi
+
 ### functions
 # function path_not_in_PATH
 # Test whether a path already exists in $PATH environment variable.
@@ -66,7 +81,7 @@ function emacs_compile_dir ()
 
 ### aliases
 ## git
-alias g="git status"
+alias gs="git status"
 alias ga="git add"
 alias gaa="git add --all ."
 alias gc="git commit"

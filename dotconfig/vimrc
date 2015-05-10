@@ -79,3 +79,10 @@ let Tlist_File_Fold_Auto_Close=1
 " fold
 set foldmethod=indent
 set foldlevel=99
+
+" grep
+function VimGrepWord()
+  let w = expand("<cword>")
+  execute "vimgrep " . w . " **"
+endfunction
+nnoremap <Leader>gr :call VimGrepWord()<CR>:copen<CR>
