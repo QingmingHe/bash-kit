@@ -14,3 +14,4 @@ elif [[ "$#" -eq 1 ]]; then
 else
     cat - > /dev/clipboard
 fi
+exit 0
