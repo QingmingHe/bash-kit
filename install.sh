@@ -1,5 +1,19 @@
 #!/usr/bin/env bash
 
+if [[ $OSTYPE = "linux-gnu" ]]; then
+    ostype="linux"
+elif [[ $OSTYPE = "cygwin" ]]; then
+    ostype="cygwin"
+elif [[ $OSTYPE = "darwin"* ]]; then
+    ostype="darwin"
+elif [[ $OSTYPE = "msys" ]]; then
+    ostype="msys"
+elif [[ $OSTYPE = "freebsd"* ]]; then
+    ostype="freebsd"
+else
+    ostype="unknown"
+fi
+
 # Install all configuration files under dotconfig/
 dotconfdir="dotconfig"
 for f in `ls $dotconfdir/`;
@@ -22,14 +36,10 @@ then
     fi
     mv ~/.vim ~/.vim.bak
 fi
-cp -r vim ~/.vim
+ln -sf $PWD/vim ~/.vim
 
-# Install Cygwin.bat for cygwin.
-# if [[ "$OSTYPE" == "cygwin" ]]
-# then
-#     if [[ -f /Cygwin.bat ]]
-#     then
-#         mv /Cygwin.bat /Cygwin.bat.bak
-#     fi
-#     cp -f Cygwin.bat /
-# fi
+# Install system specific scripts
+if [[ $ostype = "cygwin" ]]; then
+    echo install Cygwin specific scripts
+    ln -sf $PWD/scripts/xclip-cygwin.sh $PWD/bin/xclip
+fi
