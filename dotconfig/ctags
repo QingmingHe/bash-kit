@@ -6,3 +6,5 @@
 
 --Fortran-kinds=+i
 --regex-Fortran=/^# *define +([^ \(]+)(.*)$/\1/d,definitions/
+
+--Python-kinds=-i
