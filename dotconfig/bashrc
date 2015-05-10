@@ -22,7 +22,7 @@ else
 fi
 
 ## determine root of bash-kit
-export BASH_KIT_ROOT=$(dirname $(dirname $(realpath ~/.bashrc)))
+export BASH_KIT_ROOT=$(dirname $(dirname $(readlink -e ~/.bashrc)))
 
 ### functions
 # function path_not_in_PATH
