@@ -70,6 +70,7 @@ autocmd InsertLeave * set timeoutlen=1000
 let mapleader=" "
 nnoremap <leader>ss :w<cr>
 nnoremap <leader>noh :noh<cr>
+nnoremap <leader>j <c-w><c-w>
 inoremap jk <esc>
 inoremap kj <esc>
 
@@ -85,7 +86,7 @@ let Tlist_File_Fold_Auto_Close=1
 set foldmethod=indent
 set foldlevel=99
 
-" grep
+" grep search
 function VimGrepWord()
   let w = expand("<cword>")
   execute "vimgrep " . w . " **"
