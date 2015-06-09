@@ -29,3 +29,4 @@ BoldWhite=215,215,215
 BoldAsFont=yes
 BoldAsColour=no
 Locale=C
+CursorBlinks=no
