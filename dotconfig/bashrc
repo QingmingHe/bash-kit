@@ -98,8 +98,9 @@ alias gr="git remote"
 
 ## misc
 alias ls="ls -hF --color=tty"
-alias ll="ls -lAh"
+alias ll="ls -lAh1v --group-directories-first"
 alias v="vim"
+alias vi="vim"
 alias e="emacsclient -nw"
 alias em="emacs"
 alias emb="emacs_compile_dir"
@@ -122,7 +123,7 @@ add_new_PATH $BASH_KIT_ROOT/bin
 # Env vars may be useful: LD_LIBRARY_PATH, HDF5_ROOT, GTAGSCONF, CYGWIN_ROOT,
 # GTD_ROOT, DROPBOX_ROOT, MIDNIGHT_ROOT
 # SUGAR's vars: SUGAR, SUGAR_PRE, BROADR_POOL
-ENV_VAR_FILE=~/.bash-kit/env-var.sh
+ENV_VAR_FILE="$BASH_KIT_ROOT/env-var.sh"
 if [[ -f $ENV_VAR_FILE ]]
 then
     source $ENV_VAR_FILE
