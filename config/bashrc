@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# If not running interactively, don't do anything
+[[ -z "$PS1"  ]] && return
+
 ### functions
 # function path_not_in_PATH
 # Test whether a path already exists in $PATH environment variable.
@@ -82,14 +85,14 @@ alias mkdir="mkdir -pv"
 ### Environment variables
 export LANG=en_US.UTF-8
 export TERM=xterm-256color
-export HISTCONTROL=ignoreboth:erasedups
+export HISTCONTROL=ignoreboth:erasedups:ignorespace
 add_new_PATH "$HOME/bin"
 
-### Keyboard layout
-if [[ -f $(which setxkbmap) ]]
-then
-    setxkbmap -option ctrl:swapcaps
-fi
+### Miscs
+# Append to the history file, don't overwrite it
+shopt -s histappend
+# Swap ctrl and caps
+[[ -x /usr/bin/setxkbmap ]] && setxkbmap -option ctrl:swapcaps
 
 ## User env vars
 # Env vars may be useful: LD_LIBRARY_PATH, HDF5_ROOT, GTAGSCONF, CYGWIN_ROOT,
