@@ -39,7 +39,7 @@ set nojoinspaces
 syntax on
 
 " colorscheme
-colorscheme default
+colorscheme desert
 
 " line number
 set number
@@ -61,14 +61,22 @@ set backspace=indent,eol,start
 au FileType python setl sw=4 sts=4 et
 au FileType xml setl sw=2 sts=2 et
 au FileType fortran setl sw=2 sts=2 et
-nnoremap <Leader>2 :set tabstop=2 softtabstop=2 shiftwidth=2<CR>
-nnoremap <Leader>4 :set tabstop=4 softtabstop=4 shiftwidth=4<CR>
+nnoremap <leader>2 :set tabstop=2 softtabstop=2 shiftwidth=2<CR>
+nnoremap <leader>4 :set tabstop=4 softtabstop=4 shiftwidth=4<CR>
 
-" tags
-set tags=./tags,tags
-set tags+=tags;/
-" taglist
-map <silent> <leader>tl :TlistToggle<cr>
+" leader key bindings, timeout and escape
+autocmd InsertEnter * set timeoutlen=100
+autocmd InsertLeave * set timeoutlen=1000
+let mapleader=" "
+nnoremap <leader>ss :w<cr>
+nnoremap <leader>noh :noh<cr>
+nnoremap <leader>j <c-w><c-w>
+inoremap jk <esc>
+inoremap kj <esc>
+
+" tags and taglist
+set tags=./tags;/
+nnoremap <leader>tl :TlistToggle<cr>
 let Tlist_Show_One_File=0
 let Tlist_Exit_OnlyWindow=1
 let Tlist_Use_Right_Window=1
@@ -77,3 +85,10 @@ let Tlist_File_Fold_Auto_Close=1
 " fold
 set foldmethod=indent
 set foldlevel=99
+
+" grep search
+function VimGrepWord()
+  let w = expand("<cword>")
+  execute "vimgrep " . w . " **"
+endfunction
+nnoremap <leader>gr :call VimGrepWord()<CR>:copen<CR>

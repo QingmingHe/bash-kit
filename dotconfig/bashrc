@@ -2,6 +2,29 @@
 
 # If not running interactively, don't do anything
 [[ -z "$PS1"  ]] && return
+## load global definitions
+if [[ -f /etc/bashrc ]]
+then
+    . /etc/bashrc
+fi
+
+## determine operation system
+if [[ $OSTYPE = "linux-gnu" ]]; then
+    export ostype="linux"
+elif [[ $OSTYPE = "cygwin" ]]; then
+    export ostype="cygwin"
+elif [[ $OSTYPE = "darwin"* ]]; then
+    export ostype="darwin"
+elif [[ $OSTYPE = "msys" ]]; then
+    export ostype="msys"
+elif [[ $OSTYPE = "freebsd"* ]]; then
+    export ostype="freebsd"
+else
+    export ostype="unknown"
+fi
+
+## determine root of bash-kit
+export BASH_KIT_ROOT=$(dirname $(dirname $(readlink -e ~/.bashrc)))
 
 ### functions
 # function path_not_in_PATH
@@ -63,7 +86,7 @@ function emacs_compile_dir ()
 
 ### aliases
 ## git
-alias g="git status"
+alias gs="git status"
 alias ga="git add"
 alias gaa="git add --all ."
 alias gc="git commit"
@@ -77,8 +100,10 @@ alias gr="git remote"
 
 ## misc
 alias ls="ls -hF --color=tty"
-alias ll="ls -la"
+alias ll="ls -lAh"
 alias v="vim"
+alias e="emacsclient -nw"
+alias em="emacs"
 alias emb="emacs_compile_dir"
 alias mkdir="mkdir -pv"
 
@@ -87,6 +112,13 @@ export LANG=en_US.UTF-8
 export TERM=xterm-256color
 export HISTCONTROL=ignoreboth:erasedups:ignorespace
 add_new_PATH "$HOME/bin"
+add_new_PATH $BASH_KIT_ROOT/bin
+
+### Key bindings
+# By default, shell will apply Emacs key bindings. If you are familiar with
+# Vim key bindings and would like to use Vim key bindings for command-line
+# editing, just comment out the following line.
+# bindkey -v
 
 ### Miscs
 # Append to the history file, don't overwrite it

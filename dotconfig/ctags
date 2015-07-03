@@ -1,0 +1,10 @@
+--langdef=Org
+--langmap=Org:.org
+--regex-Org=/^\* +(.+)$/\1/c,chapters/
+--regex-Org=/^\*\* +(.+)$/\1/s,sections/
+--regex-Org=/^\*\*\* +(.+)$/\1/u,subsections/
+
+--Fortran-kinds=+i
+--regex-Fortran=/^# *define +([[:alnum:]]+).*$/\1/d,definitions/
+
+--Python-kinds=-i

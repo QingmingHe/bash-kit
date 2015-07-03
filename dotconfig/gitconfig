@@ -6,3 +6,7 @@
     email = 906459647@qq.com
 [core]
     editor = vim
+    preloadindex = true
+    fscache = true
+[gc]
+    auto = 256

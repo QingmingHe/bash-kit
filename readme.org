@@ -5,3 +5,18 @@
 git clone https://github.com/gmarik/Vundle.vim ~/.vim/bundle/Vundle.vim
 vim +BundleInstall +qall
 #+end_src
+
+* Vim tips
+** Reload Vim configuration file
+
+If you're editing it:
+#+begin_example
+:so %
+#+end_example
+=%= stands for current file name and =:so= is short for =:source=.
+
+** Clear search highlight
+
+#+begin_example
+:noh
+#+end_example
