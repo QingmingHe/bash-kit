@@ -50,10 +50,6 @@ set output-meta on
 # Complete ignore case
 set completion-ignore-case on
 
-# Use C-n and C-p to select
-Control-n: menu-complete
-Control-p: menu-complete-backward
-
 # Show common part with ...
 set completion-prefix-display-length 2
 
