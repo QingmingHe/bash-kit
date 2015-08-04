@@ -1,12 +1,20 @@
 [http]
-    sslVerify = false
-    postBuffer = 524288000
+	sslVerify = false
+	postBuffer = 524288000
 [user]
-    name = Qingming He
-    email = 906459647@qq.com
+	name = Qingming He
+	email = 906459647@qq.com
 [core]
-    editor = vim
-    preloadindex = true
-    fscache = true
+	editor = vim
+	preloadindex = true
+	fscache = true
 [gc]
-    auto = 256
+	auto = 256
+[diff]
+	submodule = log
+[status]
+	submodulesummary = 1
+[alias]
+	supdate = submodule update --remote --merge
+	spush = push --recurse-submodules=on-demand
+	sdiff = !git diff && git submodule foreach 'git diff'
