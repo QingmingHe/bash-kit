@@ -82,6 +82,13 @@ function emacs_compile_dir ()
     $command
 }
 
+### Environment variables
+export LANG=en_US.UTF-8
+export TERM=xterm-256color
+export HISTCONTROL=ignoreboth:erasedups
+add_new_PATH "$HOME/bin"
+add_new_PATH $BASH_KIT_ROOT/bin
+
 ### Git configuration
 if [ -f "$(which git)" ]; then
     . $BASH_KIT_ROOT/config/git-completion.bash
@@ -113,13 +120,6 @@ alias e="emacsclient -nw"
 alias em="emacs"
 alias emb="emacs_compile_dir"
 alias mkdir="mkdir -pv"
-
-### Environment variables
-export LANG=en_US.UTF-8
-export TERM=xterm-256color
-export HISTCONTROL=ignoreboth:erasedups
-add_new_PATH "$HOME/bin"
-add_new_PATH $BASH_KIT_ROOT/bin
 
 # Case-insensitive globbing
 shopt -s nocaseglob
