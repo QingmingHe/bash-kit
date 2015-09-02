@@ -84,6 +84,7 @@ function emacs_compile_dir ()
 
 ### Environment variables
 export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
 export TERM=xterm-256color
 export HISTCONTROL=ignoreboth:erasedups
 add_new_PATH "$HOME/bin"
