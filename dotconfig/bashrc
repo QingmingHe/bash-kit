@@ -84,6 +84,22 @@ function emacs_compile_dir ()
     $command
 }
 
+### Environment variables
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+export TERM=xterm-256color
+export HISTCONTROL=ignoreboth:erasedups
+add_new_PATH "$HOME/bin"
+add_new_PATH $BASH_KIT_ROOT/bin
+
+### Git configuration
+if [ -f "$(which git)" ]; then
+    . $BASH_KIT_ROOT/config/git-completion.bash
+    . $BASH_KIT_ROOT/config/git-prompt.sh
+    export GIT_PS1_SHOWDIRTYSTATE=1
+    export PS1='\[\e]0;\w\a\]\n\[\e[32m\]\u@\h \[\e[33m\]\w\[\e[0m\]\n$(__git_ps1 "(%s)")\$ '
+fi
+
 ### aliases
 ## git
 alias gs="git status"
@@ -100,19 +116,18 @@ alias gr="git remote"
 
 ## misc
 alias ls="ls -hF --color=tty"
-alias ll="ls -lAh"
+alias ll="ls -lAh1v --group-directories-first"
 alias v="vim"
+alias vi="vim"
 alias e="emacsclient -nw"
 alias em="emacs"
 alias emb="emacs_compile_dir"
 alias mkdir="mkdir -pv"
 
-### Environment variables
-export LANG=en_US.UTF-8
-export TERM=xterm-256color
-export HISTCONTROL=ignoreboth:erasedups:ignorespace
-add_new_PATH "$HOME/bin"
-add_new_PATH $BASH_KIT_ROOT/bin
+# Case-insensitive globbing
+shopt -s nocaseglob
+# Autocorrect typos in path names
+shopt -s cdspell
 
 ### Key bindings
 # By default, shell will apply Emacs key bindings. If you are familiar with
@@ -130,10 +145,8 @@ shopt -s histappend
 # Env vars may be useful: LD_LIBRARY_PATH, HDF5_ROOT, GTAGSCONF, CYGWIN_ROOT,
 # GTD_ROOT, DROPBOX_ROOT, MIDNIGHT_ROOT
 # SUGAR's vars: SUGAR, SUGAR_PRE, BROADR_POOL
-ENV_VAR_FILE=~/.bash-kit/env-var.sh
+ENV_VAR_FILE="$BASH_KIT_ROOT/env-var.sh"
 if [[ -f $ENV_VAR_FILE ]]
 then
     source $ENV_VAR_FILE
-else
-    echo "$ENV_VAR_FILE doesn't exist, you can create it to define env vars."
 fi

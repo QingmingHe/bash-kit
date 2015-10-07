@@ -5,6 +5,6 @@
 --regex-Org=/^\*\*\* +(.+)$/\1/u,subsections/
 
 --Fortran-kinds=+i
---regex-Fortran=/^# *define +([[:alnum:]]+).*$/\1/d,definitions/
+--regex-Fortran=/^# *define +([[:alnum:]_]+).*$/\1/d,definitions/
 
 --Python-kinds=-i
