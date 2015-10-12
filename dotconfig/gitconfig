@@ -5,7 +5,7 @@
 	name = Qingming He
 	email = 906459647@qq.com
 [core]
-	editor = vim
+	editor = vi
 	preloadindex = true
 	fscache = true
 [gc]
