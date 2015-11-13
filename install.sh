@@ -38,6 +38,9 @@ then
 fi
 ln -sf $PWD/vim ~/.vim
 
+# Install scripts
+ln -sf $PWD/scripts/find_port.py $PWD/bin/
+
 # Install system specific scripts
 if [[ $ostype = "cygwin" ]]; then
     echo install Cygwin specific scripts
