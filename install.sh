@@ -43,3 +43,6 @@ if [[ $ostype = "cygwin" ]]; then
     echo install Cygwin specific scripts
     ln -sf $PWD/bin/xclip-cygwin.sh $PWD/bin/xclip
 fi
+
+# Install dictionary
+ln -sf $PWD/stardict ~/.stardict
