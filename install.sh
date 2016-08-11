@@ -41,5 +41,8 @@ ln -sf $PWD/vim ~/.vim
 # Install system specific scripts
 if [[ $ostype = "cygwin" ]]; then
     echo install Cygwin specific scripts
-    ln -sf $PWD/scripts/xclip-cygwin.sh $PWD/bin/xclip
+    ln -sf $PWD/bin/xclip-cygwin.sh $PWD/bin/xclip
 fi
+
+# Install dictionary
+ln -sf $PWD/stardict ~/.stardict
