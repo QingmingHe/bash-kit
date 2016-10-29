@@ -120,7 +120,6 @@ alias gr="git remote"
 ## misc
 alias ls="ls -hF --color=tty"
 alias ll="ls -lAh1v --group-directories-first"
-alias v="vim"
 alias vi="vim"
 alias e="emacsclient -nw"
 alias em="emacs"
@@ -177,6 +176,9 @@ then
   source $ENV_VAR_FILE
 fi
 
+# z
+. $BASH_KIT_ROOT/config/z.sh
+
 # Fuzzy completion for bash. Install by:
 # git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 # ~/.fzf/install
@@ -184,19 +186,34 @@ if [[ -f ~/.fzf.bash ]]
 then
   source ~/.fzf.bash
 
-  # fd - cd to selected directory
-  fd() {
+  # cd to selected directory
+  d() {
     local dir
     dir=$(find ${1:-.} -path '*/\.*' -prune \
 	    -o -type d -print 2> /dev/null | fzf +m) && 
     cd "$dir"
   }
 
-  # fh - repeat history edit
+  # repeat history and edit
   writecmd (){ perl -e 'ioctl STDOUT, 0x5412, $_ for split //, do{ chomp($_ = <>); $_  }' ;  }
 
-  fh() {
+  h() {
     ([ -n "$ZSH_NAME"  ] && fc -l 1 || history) | fzf +s --tac | sed -re 's/^\s*[0-9]+\s*//' | writecmd
 
+  }
+
+  # jump to recent directory
+  j() {
+    [ $# -gt 0 ] && _z "$*" && return
+    cd "$(_z -l 2>&1 | fzf-tmux +s --tac --query "$*" | sed 's/^[0-9,.]* *//')"
+  }
+
+  # open files in ~/.viminfo
+  v() {
+    local files
+    files=$(grep '^>' ~/.viminfo | cut -c3- |
+            while read line; do
+                [ -f "${line/\~/$HOME}" ] && echo "$line"
+            done | fzf-tmux -d -m -q "$*" -1) && vim ${files//\~/$HOME}
   }
 fi
