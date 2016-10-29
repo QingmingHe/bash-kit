@@ -176,3 +176,8 @@ if [[ -f $ENV_VAR_FILE ]]
 then
     source $ENV_VAR_FILE
 fi
+
+# Fuzzy completion for bash. Install by:
+# git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+# ~/.fzf/install
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
