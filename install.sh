@@ -46,3 +46,11 @@ fi
 
 # Install dictionary
 ln -sf $PWD/stardict ~/.stardict
+
+# Install fzf
+if [[ ! -d ~/.fzf ]]
+then
+    echo "install fzf, select y y n"
+    ln -sf $PWD/fzf ~/.fzf 
+    ~/.fzf/install
+fi
