@@ -159,11 +159,11 @@ shopt -s histappend
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
 if ! shopt -oq posix; then
-  if [ -f /usr/share/bash-completion/bash_completion ]; then
-    . /usr/share/bash-completion/bash_completion
-  elif [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
-  fi
+    if [ -f /usr/share/bash-completion/bash_completion ]; then
+        . /usr/share/bash-completion/bash_completion
+    elif [ -f /etc/bash_completion ]; then
+        . /etc/bash_completion
+    fi
 fi
 
 ## User env vars
@@ -173,52 +173,46 @@ fi
 ENV_VAR_FILE="$BASH_KIT_ROOT/env-var.sh"
 if [[ -f $ENV_VAR_FILE ]]
 then
-  source $ENV_VAR_FILE
+    source $ENV_VAR_FILE
 fi
 
 # z
 . $BASH_KIT_ROOT/config/z.sh
 
-# Fuzzy completion for bash. Install by:
-# git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-# ~/.fzf/install
-if [[ -f ~/.fzf.bash ]]
+# Fuzzy completion for bash
+if [[ -f ~/.fzf.bash && -d ~/.fzf ]]
 then
-  source ~/.fzf.bash
+    source ~/.fzf.bash
 
-  # cd to selected directory
-  d() {
-    local dir
-    dir=$(find ${1:-.} -path '*/\.*' -prune \
-	    -o -type d -print 2> /dev/null | fzf +m) && 
-    cd "$dir"
-  }
+    # cd to selected directory
+    d() {
+        local dir
+        dir=$(find ${1:-.} -path '*/\.*' -prune \
+                   -o -type d -print 2> /dev/null | fzf +m) && 
+            cd "$dir"
+    }
 
-  # repeat history and edit
-  writecmd (){ perl -e 'ioctl STDOUT, 0x5412, $_ for split //, do{ chomp($_ = <>); $_  }' ;  }
+    # repeat history and edit
+    writecmd (){ perl -e 'ioctl STDOUT, 0x5412, $_ for split //, do{ chomp($_ = <>); $_  }' ;  }
 
-  h() {
-    ([ -n "$ZSH_NAME"  ] && fc -l 1 || history) | fzf +s --tac | sed -re 's/^\s*[0-9]+\s*//' | writecmd
+    h() {
+        ([ -n "$ZSH_NAME"  ] && fc -l 1 || history) | fzf +s --tac |
+            sed -re 's/^\s*[0-9]+\s*//' | writecmd
 
-  }
+    }
 
-  # jump to recent directory
-  j() {
-    [ $# -gt 0 ] && _z "$*" && return
-    cd "$(_z -l 2>&1 | fzf-tmux +s --tac --query "$*" | sed 's/^[0-9,.]* *//')"
-  }
+    # jump to recent directory
+    j() {
+        [ $# -gt 0 ] && _z "$*" && return
+        cd "$(_z -l 2>&1 | fzf-tmux +s --tac --query "$*" | sed 's/^[0-9,.]* *//')"
+    }
 
-  # open files in ~/.viminfo
-  v() {
-    local files
-    files=$(grep '^>' ~/.viminfo | cut -c3- |
-            while read line; do
-                [ -f "${line/\~/$HOME}" ] && echo "$line"
-            done | fzf-tmux -d -m -q "$*" -1) && vim ${files//\~/$HOME}
-  }
-
-else
-    echo "Please Install fzf:"
-    echo "git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && \
-~/.fzf/install"
+    # open files in ~/.viminfo
+    v() {
+        local files
+        files=$(grep '^>' ~/.viminfo | cut -c3- |
+                       while read line; do
+                           [ -f "${line/\~/$HOME}" ] && echo "$line"
+                       done | fzf-tmux -d -m -q "$*" -1) && vim ${files//\~/$HOME}
+    }
 fi

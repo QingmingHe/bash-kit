@@ -46,3 +46,11 @@ fi
 
 # Install dictionary
 ln -sf $PWD/stardict ~/.stardict
+
+# Install fzf
+if [[ ! -d ~/.fzf ]]
+then
+    echo install fzf
+    git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && \
+        ~/.fzf/install
+fi
