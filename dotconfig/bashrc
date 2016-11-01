@@ -120,6 +120,7 @@ alias gr="git remote"
 ## misc
 alias ls="ls -hF --color=tty"
 alias ll="ls -lAh1v --group-directories-first"
+alias v="vim"
 alias vi="vim"
 alias e="emacsclient -nw"
 alias em="emacs"
