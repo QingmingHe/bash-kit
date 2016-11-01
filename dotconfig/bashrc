@@ -206,7 +206,7 @@ then
     }
 
     # open files in ~/.viminfo
-    v() {
+    f() {
         local files
         files=$(grep '^>' ~/.viminfo | cut -c3- |
                        while read line; do
