@@ -27,16 +27,20 @@ do
 done
 
 # Install vim configuration
-echo install vim configuration
-if [[ -d ~/.vim ]]
+if [[ $ostype != "msys" ]]
 then
-    if [[ -d ~/.vim.bak ]]
+    echo install vim configuration
+    ln -sf $PWD/vim/vimrc ~/.vimrc
+    if [[ -d ~/.vim ]]
     then
-        rm -rf ~/.vim.bak
+        if [[ -d ~/.vim.bak ]]
+        then
+            rm -rf ~/.vim.bak
+        fi
+        mv ~/.vim ~/.vim.bak
     fi
-    mv ~/.vim ~/.vim.bak
+    ln -sf $PWD/vim ~/.vim
 fi
-ln -sf $PWD/vim ~/.vim
 
 # Install system specific scripts
 if [[ $ostype = "cygwin" ]]; then
@@ -45,12 +49,19 @@ if [[ $ostype = "cygwin" ]]; then
 fi
 
 # Install dictionary
-ln -sf $PWD/stardict ~/.stardict
+if [[ $ostype != "msys" ]]
+then
+    ln -sf $PWD/stardict ~/.stardict
+fi
+
 
 # Install fzf
-if [[ ! -d ~/.fzf ]]
+if [[ $ostype != "msys" ]]
 then
-    echo install fzf
-    git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && \
-        ~/.fzf/install
+    if [[ ! -d ~/.fzf ]]
+    then
+        echo install fzf
+        git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && \
+            ~/.fzf/install
+    fi
 fi
