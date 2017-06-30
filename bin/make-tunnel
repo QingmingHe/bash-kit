@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# This is just example:
+# Your .ssh/config file
+# Host kilkenny
+#     HostName localhost
+#     User user_name
+#     Port 4321
+# make tunnel command
+ssh -fN -L 4321:remote_host:22 user_name@bridge_host
