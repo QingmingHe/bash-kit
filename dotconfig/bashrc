@@ -158,7 +158,16 @@ then
     # Append to the history file, don't overwrite it
     shopt -s histappend
     # Swap ctrl and caps
-    [[ -x /usr/bin/setxkbmap ]] && setxkbmap -option ctrl:swapcaps
+    # not useful when input method is changed
+    # [[ -x /usr/bin/setxkbmap ]] && setxkbmap -option ctrl:swapcaps
+    # strange that caps and ctrl all work as ctrl
+    keyboardconfig=/etc/default/keyboard
+    if [ -f $keyboardconfig ]; then
+	if [[ $(cat $keyboardconfig | grep 'XKBOPTIONS=""') != '' ]]; then
+            echo "changing $keyboardconfig ..."
+            sudo sed -i 's/XKBOPTIONS=""/XKBOPTIONS="ctrl:swapcaps"/' $keyboardconfig
+        fi
+    fi
 
     # enable programmable completion features (you don't need to enable
     # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
