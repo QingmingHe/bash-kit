@@ -4,12 +4,12 @@
 
 # Swap ctrl and caps
 # not useful when input method is changed
-# [[ -x /usr/bin/setxkbmap ]] && setxkbmap -option ctrl:swapcaps
+[[ -x /usr/bin/setxkbmap ]] && setxkbmap -option ctrl:swapcaps
 # strange that caps and ctrl all work as ctrl
-keyboardconfig=/etc/default/keyboard
-if [ -f $keyboardconfig ]; then
-    if [[ $(cat $keyboardconfig | grep 'XKBOPTIONS=""') != '' ]]; then
-        echo "changing $keyboardconfig ..."
-        sudo sed -i 's/XKBOPTIONS=""/XKBOPTIONS="ctrl:swapcaps"/' $keyboardconfig
-    fi
-fi
+# keyboardconfig=/etc/default/keyboard
+# if [ -f $keyboardconfig ]; then
+#     if [[ $(cat $keyboardconfig | grep 'XKBOPTIONS=""') != '' ]]; then
+#         echo "changing $keyboardconfig ..."
+#         sudo sed -i 's/XKBOPTIONS=""/XKBOPTIONS="ctrl:swapcaps"/' $keyboardconfig
+#     fi
+# fi
