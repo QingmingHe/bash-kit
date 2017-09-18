@@ -84,6 +84,20 @@ function emacs_compile_dir ()
     $command
 }
 
+# lock screen
+function lock ()
+{
+    gnome-screensaver-command -l; xset dpms force off
+}
+
+# switch touch pad on or off
+function tp ()
+{
+    # use xinput list to get device
+    # use xinput enable/disable <device>
+    echo TODO
+}
+
 ### Environment variables
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
