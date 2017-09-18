@@ -129,6 +129,9 @@ alias emb="emacs_compile_dir"
 alias mkdir="mkdir -pv"
 alias myip="ifconfig | sed -En 's/127.0.0.1//;s/.*inet (addr:)?(([0-9]*\.){3}[0-9]*).*/\2/p'"
 
+# check all memory leak
+alias valgrind="valgrind --leak-check=full"
+
 if [[ $ostype != "msys" ]]
 then
     # Case-insensitive globbing
