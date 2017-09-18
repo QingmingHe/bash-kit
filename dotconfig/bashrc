@@ -132,6 +132,9 @@ alias myip="ifconfig | sed -En 's/127.0.0.1//;s/.*inet (addr:)?(([0-9]*\.){3}[0-
 # check all memory leak
 alias valgrind="valgrind --leak-check=full"
 
+# suspend
+alias suspend="gnome-screensaver-command -l; xset dpms force off; /usr/bin/dbus-send --system --print-reply --dest="org.freedesktop.UPower" /org/freedesktop/UPower org.freedesktop.UPower.Suspend"
+
 if [[ $ostype != "msys" ]]
 then
     # Case-insensitive globbing
