@@ -13,3 +13,6 @@
 #         sudo sed -i 's/XKBOPTIONS=""/XKBOPTIONS="ctrl:swapcaps"/' $keyboardconfig
 #     fi
 # fi
+
+# turn off touchpad
+~/.bash-kit/bin/tp --off
