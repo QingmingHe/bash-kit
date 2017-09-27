@@ -100,6 +100,7 @@ export HISTFILESIZE=2000
 add_new_PATH $HOME/bin
 add_new_PATH $HOME/.local/bin
 add_new_PATH $BASH_KIT_ROOT/bin
+[[ -f ~/.pystartup ]] && export PYTHONSTARTUP=~/.pystartup
 
 # ### Git configuration
 # if [ -f "$(which git)" ]; then
