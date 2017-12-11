@@ -84,6 +84,12 @@ function emacs_compile_dir ()
     $command
 }
 
+# lock screen
+function lock ()
+{
+    gnome-screensaver-command -l; xset dpms force off
+}
+
 ### Environment variables
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
@@ -94,6 +100,7 @@ export HISTFILESIZE=2000
 add_new_PATH $HOME/bin
 add_new_PATH $HOME/.local/bin
 add_new_PATH $BASH_KIT_ROOT/bin
+[[ -f ~/.pystartup ]] && export PYTHONSTARTUP=~/.pystartup
 
 # ### Git configuration
 # if [ -f "$(which git)" ]; then
@@ -131,6 +138,9 @@ alias myip="ifconfig | sed -En 's/127.0.0.1//;s/.*inet (addr:)?(([0-9]*\.){3}[0-
 
 # check all memory leak
 alias valgrind="valgrind --leak-check=full"
+
+# suspend
+alias sp="gnome-screensaver-command -l; xset dpms force off; /usr/bin/dbus-send --system --print-reply --dest="org.freedesktop.UPower" /org/freedesktop/UPower org.freedesktop.UPower.Suspend"
 
 if [[ $ostype != "msys" ]]
 then

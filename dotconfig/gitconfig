@@ -18,3 +18,5 @@
 	supdate = submodule update --remote --merge
 	spush = push --recurse-submodules=on-demand
 	sdiff = !git diff && git submodule foreach 'git diff'
+[push]
+	default = simple
