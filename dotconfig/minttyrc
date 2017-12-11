@@ -5,7 +5,6 @@ Term=xterm-256color
 Transparency=off
 CursorType=block
 Charset=UTF-8
-Window=max
 ZoomShortcuts=no
 ForegroundColour=215,215,215
 BackgroundColour=48,48,48
