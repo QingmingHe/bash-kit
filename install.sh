@@ -55,21 +55,21 @@ then
 fi
 
 # Install fzf
-if [[ $ostype != "msys" ]]
-then
-    if [[ ! -d ~/.fzf ]]
-    then
-        if [[ -f fzf-master.zip ]]
-        then
-            # Install manually
-            unzip fzf-mater.zip
-            mv fzf-master ~/.fzf
-            ~/.fzf/install
-        else
-            # Install online
-            echo install fzf
-            git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && \
-                ~/.fzf/install
-        fi
-    fi
-fi
+# if [[ $ostype != "msys" ]]
+# then
+#     if [[ ! -d ~/.fzf ]]
+#     then
+#         if [[ -f fzf-master.zip ]]
+#         then
+#             # Install manually
+#             unzip fzf-mater.zip
+#             mv fzf-master ~/.fzf
+#             ~/.fzf/install
+#         else
+#             # Install online
+#             echo install fzf
+#             git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && \
+#                 ~/.fzf/install
+#         fi
+#     fi
+# fi
